@@ -2,9 +2,7 @@ package com.falconraptor.utilities.files;
 
 import com.falconraptor.utilities.logger.Logger;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 public class Read {
     public static String log = "[com.falconraptor.utilities.files.Read.";
@@ -36,6 +34,24 @@ public class Read {
             return out;
         } catch (Exception e) {
             if (Logger.level <= 5) Logger.logERROR(log + "read] " + e);
+            return "";
+        }
+    }
+
+    public static String readjar(String filename) {
+        try {
+            InputStream in = new Read().getClass().getResourceAsStream(filename);
+            BufferedReader input = new BufferedReader(new InputStreamReader(in));
+            String line = input.readLine();
+            String out = "";
+            while (line != null) {
+                out += line + "!";
+                line = input.readLine();
+            }
+            input.close();
+            return out;
+        } catch (Exception e) {
+            if (Logger.level <= 5) Logger.logERROR(log + "readjar] " + e);
             return "";
         }
     }
