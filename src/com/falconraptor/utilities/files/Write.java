@@ -39,6 +39,8 @@ public class Write {
                 file.mkdirs();
                 if (Logger.level <= 3) Logger.logDEBUG(log + "makeDir] Directories Created");
             }
+        } catch (Exception e) {
+            if (Logger.level <= 5) Logger.logERROR(log + "makeDir] " + e);
         }
     }
 
