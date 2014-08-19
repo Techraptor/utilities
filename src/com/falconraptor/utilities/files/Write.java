@@ -17,6 +17,7 @@ public class Write {
         try {
             file = new File(filename);
             if (!file.exists()) {
+                file.mkdirs();
                 file.createNewFile();
                 if (Logger.level <= 3) Logger.logDEBUG(log + "Write] File Created");
             } else {
