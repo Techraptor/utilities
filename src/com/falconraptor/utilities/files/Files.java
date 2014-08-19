@@ -29,20 +29,16 @@ public class Files {
     public static void downloadfile(String url, String filename) {
         try {
             URL download = new URL(url);
-            if (Logger.level <= 3) {
-                Logger.logDEBUG(log + "downloadfile] Starting Download of " + filename + " from " + url);
-            }
+            Logger.logDEBUG(log + "downloadfile] Starting Download of " + filename + " from " + url);
             ReadableByteChannel rbc = Channels.newChannel(download.openStream());
             FileOutputStream fileOut = new FileOutputStream(filename);
             fileOut.getChannel().transferFrom(rbc, 0, 1 << 24);
             fileOut.flush();
             fileOut.close();
             rbc.close();
-            if (Logger.level <= 3) {
-                Logger.logDEBUG(log + "downloadfile] Download Complete");
-            }
+            Logger.logDEBUG(log + "downloadfile] Download Complete");
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "downloadfile] " + e);
+            Logger.logERROR(log + "downloadfile] " + e);
         }
     }
 }

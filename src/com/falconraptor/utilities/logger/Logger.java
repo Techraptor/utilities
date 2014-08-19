@@ -23,23 +23,23 @@ public class Logger {
     }
 
     public static void logALL(Object object) {
-        log("[ALL] ", object);
+        if (level <= ALL) log("[ALL] ", object);
     }
 
     public static void logDEBUG(Object object) {
-        log("[DEBUG] ", object);
+        if (level <= DEBUG) log("[DEBUG] ", object);
     }
 
     public static void logERROR(Object object) {
-        log("[ERROR] ", object);
+        if (level <= ERROR) log("[ERROR] ", object);
     }
 
     public static void logWARNING(Object object) {
-        log("[WARNING] ", object);
+        if (level <= WARNING) log("[WARNING] ", object);
     }
 
     public static void logINFO(Object object) {
-        log("[INFO] ", object);
+        if (level <= INFO) log("[INFO] ", object);
     }
 
     private static void log(String level, Object object) {

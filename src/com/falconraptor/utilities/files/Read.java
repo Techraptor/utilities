@@ -13,12 +13,12 @@ public class Read {
         try {
             file = new File(filename);
             if (!file.exists()) {
-                if (Logger.level <= 5) Logger.logERROR(filename + " does not exist!");
+                Logger.logERROR(filename + " does not exist!");
                 return;
             }
             reader = new BufferedReader(new FileReader(filename));
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "Read] " + e);
+            Logger.logERROR(log + "Read] " + e);
         }
     }
 
@@ -33,7 +33,7 @@ public class Read {
             reader.close();
             return out;
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "read] " + e);
+            Logger.logERROR(log + "read] " + e);
             return "";
         }
     }
@@ -51,7 +51,7 @@ public class Read {
             input.close();
             return out;
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "readjar] " + e);
+            Logger.logERROR(log + "readjar] " + e);
             return "";
         }
     }

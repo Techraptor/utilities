@@ -18,17 +18,17 @@ public class Write {
             file = new File(filename);
             if (!file.exists()) {
                 file.createNewFile();
-                if (Logger.level <= 3) Logger.logDEBUG(log + "Write] File Created");
+                Logger.logDEBUG(log + "Write] File Created");
             } else {
                 file.delete();
                 file.createNewFile();
-                if (Logger.level <= 3) Logger.logDEBUG(log + "Write] File Recreated");
+                Logger.logDEBUG(log + "Write] File Recreated");
             }
             fw = new FileWriter(file.getAbsoluteFile());
             writer = new BufferedWriter(fw);
             if (hidden) hide();
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "Write] " + e);
+            Logger.logERROR(log + "Write] " + e);
         }
     }
 
@@ -36,11 +36,11 @@ public class Write {
         try {
             File dir = new File(directory);
             if (!dir.exists()) {
-                file.mkdirs();
-                if (Logger.level <= 3) Logger.logDEBUG(log + "makeDir] Directories Created");
+                dir.mkdirs();
+                Logger.logDEBUG(log + "makeDir] Directory Created");
             }
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "makeDir] " + e);
+            Logger.logERROR(log + "makeDir] " + e);
         }
     }
 
@@ -48,7 +48,7 @@ public class Write {
         try {
             writer.write(out);
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "write] " + e);
+            Logger.logERROR(log + "write] " + e);
         }
     }
 
@@ -56,16 +56,16 @@ public class Write {
         try {
             writer.newLine();
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "newline] " + e);
+            Logger.logERROR(log + "newline] " + e);
         }
     }
 
     public static void close() {
         try {
             writer.close();
-            if (Logger.level <= 3) Logger.logDEBUG(log + "close] File Saved");
+            Logger.logDEBUG(log + "close] File Saved");
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "close] " + e);
+            Logger.logERROR(log + "close] " + e);
         }
     }
 
@@ -75,7 +75,7 @@ public class Write {
             Process p = Runtime.getRuntime().exec("attrib +h " + file.getPath());
             p.waitFor(); // p.waitFor() important, so that the file really appears as hidden immediately after function exit.
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "hide] " + e);
+            Logger.logERROR(log + "hide] " + e);
         }
     }
 
@@ -86,7 +86,7 @@ public class Write {
                 newline();
             }
         } catch (Exception e) {
-            if (Logger.level <= 5) Logger.logERROR(log + "write] " + e);
+            Logger.logERROR(log + "write] " + e);
         }
     }
 }
