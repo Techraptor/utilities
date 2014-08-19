@@ -17,7 +17,6 @@ public class Write {
         try {
             file = new File(filename);
             if (!file.exists()) {
-                file.mkdirs();
                 file.createNewFile();
                 if (Logger.level <= 3) Logger.logDEBUG(log + "Write] File Created");
             } else {
@@ -30,6 +29,16 @@ public class Write {
             if (hidden) hide();
         } catch (Exception e) {
             if (Logger.level <= 5) Logger.logERROR(log + "Write] " + e);
+        }
+    }
+
+    public static void makeDir(String directory) {
+        try {
+            File dir = new File(directory);
+            if (!dir.exists()) {
+                file.mkdirs();
+                if (Logger.level <= 3) Logger.logDEBUG(log + "makeDir] Directories Created");
+            }
         }
     }
 
