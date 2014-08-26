@@ -2,6 +2,8 @@ package com.falconraptor.utilities.files;
 
 import com.falconraptor.utilities.logger.Logger;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class Read {
@@ -27,7 +29,7 @@ public class Read {
             String line = reader.readLine();
             String out = "";
             while (line != null) {
-                out += line + "\n";
+                out += line + "↔";
                 line = reader.readLine();
             }
             reader.close();
@@ -54,5 +56,14 @@ public class Read {
             Logger.logERROR(log + "readjar] " + e);
             return "";
         }
+    }
+    public static BufferedImage readImagefromJar(String filename){
+        BufferedImage buff = null;
+        try {
+            buff = ImageIO.read(new Read().getClass().getResourceAsStream(filename));
+        } catch (Exception e) {
+            Logger.logERROR(log+"readImagefromJar] "+e);
+        }
+        return buff;
     }
 }
