@@ -48,7 +48,7 @@ public class Logger {
     }
 
     public static void saveLog(String file) {
-        Write.Write(file, false);
+        Write.Write(file.substring(0, file.lastIndexOf(".")) + formatCalender(getCalendar()).substring(0, formatCalender(getCalendar()).lastIndexOf(":")).replaceAll(" ", "").replaceAll(":", ";") + "]" + file.substring(file.lastIndexOf(".")), false);
         Write.write(log);
         Write.close();
     }
