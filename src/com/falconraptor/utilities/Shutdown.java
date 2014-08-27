@@ -16,4 +16,9 @@ public class Shutdown {
         });
         Logger.logINFO("Shut Down Hook Attached.");
     }
+
+    public void attachShutDownHook(Thread t) {
+        Runtime.getRuntime().addShutdownHook(t);
+        Logger.logINFO("Shut Down Hook Attached.");
+    }
 }
