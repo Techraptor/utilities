@@ -11,8 +11,9 @@ public class Logger {
     public static final int ERROR = 5;
     public static final int WARNING = 4;
     public static final int INFO = 2;
-    public static ArrayList<String> log = new ArrayList<String>(0);
+    public static ArrayList<String> log = new ArrayList<>(0);
     public static int level = 3;
+    public static Console console = new Console();
 
     public static Calendar getCalendar() {
         return Calendar.getInstance();
@@ -43,8 +44,10 @@ public class Logger {
     }
 
     private static void log(String level, Object object) {
-        System.out.println(formatCalender(getCalendar()) + level + object.toString());
-        log.add(formatCalender(getCalendar()) + level + object.toString());
+        String logitem = formatCalender(getCalendar()) + level + object.toString();
+        System.out.println(logitem);
+        log.add(logitem);
+        console.updateConsole(logitem);
     }
 
     public static void saveLog(String file) {

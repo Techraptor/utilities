@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eec1342e-4a39-4646-b917-d2ca3d206975" name="Default" comment="changed log file name">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Console.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/falconraptor/utilities/Shutdown.java" afterPath="$PROJECT_DIR$/src/com/falconraptor/utilities/Shutdown.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="eec1342e-4a39-4646-b917-d2ca3d206975" name="Default" comment="added console">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Console.java" afterPath="$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Console.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Logger.java" afterPath="$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Logger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Read.java" afterPath="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Read.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Write.java" afterPath="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Write.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/dustin.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/dustin.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="utilities.iws" />
@@ -41,8 +43,8 @@
       <file leaf-file-name="Write.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/files/Write.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="1666">
-              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="1598">
+              <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -51,8 +53,8 @@
       <file leaf-file-name="Read.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/files/Read.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1275">
-              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1275">
+              <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="58" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -61,8 +63,8 @@
       <file leaf-file-name="Logger.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Logger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1037">
-              <caret line="50" column="199" selection-start-line="50" selection-start-column="199" selection-end-line="50" selection-end-column="199" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="833">
+              <caret line="46" column="81" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -71,11 +73,9 @@
       <file leaf-file-name="Console.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Console.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.543771" vertical-offset="119" max-vertical-offset="833">
-              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.65824914" vertical-offset="51" max-vertical-offset="867">
+              <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,7 +83,7 @@
       <file leaf-file-name="Shutdown.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/Shutdown.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="510">
               <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding />
             </state>
@@ -112,10 +112,10 @@
         <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/Utilities.java" />
         <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/Files.java" />
         <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Files.java" />
-        <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Write.java" />
-        <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Read.java" />
-        <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Logger.java" />
         <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/Shutdown.java" />
+        <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Read.java" />
+        <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/files/Write.java" />
+        <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Logger.java" />
         <option value="$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Console.java" />
       </list>
     </option>
@@ -137,7 +137,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -152,7 +152,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -235,7 +235,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -249,7 +249,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../monopoly" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -477,7 +477,11 @@
       <created>1409104948206</created>
       <updated>1409104948206</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added console">
+      <created>1409108427236</created>
+      <updated>1409108427236</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -525,8 +529,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39871383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -553,7 +557,8 @@
     <MESSAGE value="made logging easier" />
     <MESSAGE value="added shutdown class" />
     <MESSAGE value="changed log file name" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed log file name" />
+    <MESSAGE value="added console" />
+    <option name="LAST_COMMIT_MESSAGE" value="added console" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -917,30 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/files/Write.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="1666">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/files/Read.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1207">
-          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="178" max-vertical-offset="782">
-          <caret line="50" column="199" selection-start-line="50" selection-start-column="199" selection-end-line="50" selection-end-column="199" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_20/src.zip!/java/lang/Runtime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33277312" vertical-offset="2811" max-vertical-offset="15079">
@@ -961,17 +942,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="8251" max-vertical-offset="43809">
           <caret line="566" column="11" selection-start-line="566" selection-start-column="11" selection-end-line="566" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/files/Read.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="565" max-vertical-offset="1207">
+          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="58" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/files/Write.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="1598">
+          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="833">
+          <caret line="46" column="81" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/falconraptor/utilities/logger/Console.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.543771" vertical-offset="119" max-vertical-offset="833">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.65824914" vertical-offset="51" max-vertical-offset="867">
+          <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

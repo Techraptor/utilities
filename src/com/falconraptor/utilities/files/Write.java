@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class Write {
     public static String log = "[com.falconraptor.utilities.files.Write.";
     private static BufferedWriter writer;

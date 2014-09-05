@@ -42,7 +42,7 @@ public class Read {
 
     public static String readjar(String filename) {
         try {
-            InputStream in = new Read().getClass().getResourceAsStream(filename);
+            InputStream in = Read.class.getResourceAsStream(filename);
             BufferedReader input = new BufferedReader(new InputStreamReader(in));
             String line = input.readLine();
             String out = "";
@@ -60,7 +60,7 @@ public class Read {
     public static BufferedImage readImagefromJar(String filename){
         BufferedImage buff = null;
         try {
-            buff = ImageIO.read(new Read().getClass().getResourceAsStream(filename));
+            buff = ImageIO.read(Read.class.getResourceAsStream(filename));
         } catch (Exception e) {
             Logger.logERROR(log+"readImagefromJar] "+e);
         }
