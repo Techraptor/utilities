@@ -41,7 +41,8 @@ public class Console extends JFrame {
                 text.setText("");
                 for (String s : logtext) text.setText(text.getText() + s + System.getProperty("line.separator"));
             }
-        } else text.setText(text.getText() + logtext.get(logtext.size() - 1) + System.getProperty("line.seperator"));
+        } else if (logtext.size() >= 1)
+            text.setText(text.getText() + logtext.get(logtext.size() - 1) + System.getProperty("line.separator"));
         text.setEditable(false);
     }
 }
