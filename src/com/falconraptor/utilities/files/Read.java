@@ -57,12 +57,13 @@ public class Read {
             return "";
         }
     }
-    public static BufferedImage readImagefromJar(String filename){
+
+    public static BufferedImage readImagefromJar(String filename) {
         BufferedImage buff = null;
         try {
             buff = ImageIO.read(Read.class.getResourceAsStream(filename));
         } catch (Exception e) {
-            Logger.logERROR(log+"readImagefromJar] "+e);
+            Logger.logERROR(log + "readImagefromJar] " + e);
         }
         return buff;
     }
