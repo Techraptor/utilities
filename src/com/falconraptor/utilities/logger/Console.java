@@ -2,10 +2,13 @@ package com.falconraptor.utilities.logger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 public class Console extends JFrame {
     private final String log = "[com.falconraptor.utilities.logger.Console.";
+    public boolean closed = false;
     private JTextArea text = new JTextArea();
     private ArrayList<String> logtext = new ArrayList<>(0);
 
@@ -17,6 +20,40 @@ public class Console extends JFrame {
         setVisible(false);
         setSize(200, 200);
         pack();
+        addWindowListener(windowlisten());
+    }
+
+    private WindowListener windowlisten() {
+        return new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                closed = true;
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        };
     }
 
     private JPanel setGUI() {

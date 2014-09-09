@@ -47,7 +47,7 @@ public class Logger {
         String logitem = formatCalender(getCalendar()) + level + object.toString();
         System.out.println(logitem);
         log.add(logitem);
-        console.updateConsole(logitem);
+        if (!console.closed) console.updateConsole(logitem);
     }
 
     public static void saveLog(String file) {

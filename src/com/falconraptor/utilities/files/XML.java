@@ -42,7 +42,6 @@ public class XML {
     }
 
     public void setNewFile() {
-        document = null;
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -113,5 +112,19 @@ public class XML {
         } catch (Exception e) {
             Logger.logERROR(log + "addTextToElement] " + e);
         }
+    }
+
+    public void fixOrganization(String filename) {
+        Read.Read(filename);
+        String text = Read.read();
+        text.replaceAll("><", ">!!!!<");
+        text.replaceAll("↔", "");
+        String[] text2 = text.split("!!!!");
+        ArrayList<String> textarraylist = new ArrayList<>(0);
+        for (String s : text2) textarraylist.add(s);
+        Write.Write(filename, false);
+        Write.write(textarraylist);
+        Write.close();
+        Logger.logINFO("File Organized");
     }
 }
