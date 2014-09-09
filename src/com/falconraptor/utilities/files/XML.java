@@ -117,11 +117,19 @@ public class XML {
     public void fixOrganization(String filename) {
         Read.Read(filename);
         String text = Read.read();
-        text.replaceAll("><", ">!!!!<");
-        text.replaceAll("↔", "");
+        text = text.replaceAll("><", ">!!!!<");
+        text = text.replaceAll("↔", "");
         String[] text2 = text.split("!!!!");
         ArrayList<String> textarraylist = new ArrayList<>(0);
-        for (String s : text2) textarraylist.add(s);
+        int tabs = -2;
+        String temp = " ";
+        for (String s : text2) {
+            if (s.indexOf("/") == -1 || temp.indexOf("/") == -1) tabs += 1;
+            else if (s.substring(0, 2).equals("</")) tabs -= 1;
+            for (int i = 0; i < tabs; i++) s = "     " + s;
+            textarraylist.add(s);
+            temp = s;
+        }
         Write.Write(filename, false);
         Write.write(textarraylist);
         Write.close();
