@@ -101,6 +101,7 @@ public class XML {
             StreamResult result = new StreamResult(new File(filename));
             transformer.transform(source, result);
             Logger.logINFO("XML File: " + filename + " saved");
+            fixOrganization(filename);
         } catch (Exception e) {
             Logger.logERROR(log + "saveFile] " + e);
         }
