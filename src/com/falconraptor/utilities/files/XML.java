@@ -20,7 +20,7 @@ public class XML {
     public ArrayList<Element> elements = new ArrayList<>(0);
     private Document document;
 
-    public NodeList readXML(String filename) {
+    public NodeList readXMLNode(String filename) {
         try {
             File fXmlFile = new File(filename);
             if (!fXmlFile.exists()) {
@@ -35,6 +35,26 @@ public class XML {
             NodeList nodeList = doc.getElementsByTagName(doc.getDocumentElement().getNodeName());
             Logger.logINFO("Done Reading XML File: " + filename);
             return nodeList;
+        } catch (Exception e) {
+            Logger.logERROR(log + "readXML] " + e);
+            return null;
+        }
+    }
+
+    public Document readXMLDoc(String filename) {
+        try {
+            File fXmlFile = new File(filename);
+            if (!fXmlFile.exists()) {
+                Logger.logERROR(filename + " does not exist!");
+                return null;
+            }
+            Logger.logINFO("Reading XML File: " + filename);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
+            doc.getDocumentElement().normalize();
+            Logger.logINFO("Done Reading XML File: " + filename);
+            return doc;
         } catch (Exception e) {
             Logger.logERROR(log + "readXML] " + e);
             return null;
