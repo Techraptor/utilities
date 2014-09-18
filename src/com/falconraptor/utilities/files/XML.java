@@ -13,6 +13,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class XML {
@@ -48,6 +49,22 @@ public class XML {
                 Logger.logERROR(filename + " does not exist!");
                 return null;
             }
+            Logger.logINFO("Reading XML File: " + filename);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
+            doc.getDocumentElement().normalize();
+            Logger.logINFO("Done Reading XML File: " + filename);
+            return doc;
+        } catch (Exception e) {
+            Logger.logERROR(log + "readXML] " + e);
+            return null;
+        }
+    }
+
+    public Document readXMLDocFromJar(String filename) {
+        try {
+            InputStream fXmlFile = Read.class.getResourceAsStream(filename);
             Logger.logINFO("Reading XML File: " + filename);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
