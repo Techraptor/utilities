@@ -64,8 +64,8 @@ public class XML {
 
     public Document readXMLDocFromJar(String filename) {
         try {
-            InputStream fXmlFile = Read.class.getResourceAsStream(filename);
-            Logger.logINFO("Reading XML File: " + filename);
+            InputStream fXmlFile = getClass().getClassLoader().getResourceAsStream(filename);
+            Logger.logALL("Reading XML File: " + filename);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
@@ -97,7 +97,7 @@ public class XML {
     public void appendElement(int addTo, int element) {
         try {
             elements.get(addTo).appendChild(elements.get(element));
-            Logger.logINFO("Added " + elements.get(element).getTagName() + " to " + elements.get(addTo).getTagName());
+            Logger.logALL("Added " + elements.get(element).getTagName() + " to " + elements.get(addTo).getTagName());
         } catch (Exception e) {
             Logger.logERROR(log + "appendElement] " + e);
         }
@@ -106,7 +106,7 @@ public class XML {
     public void appendElement(int addTo, Text element) {
         try {
             elements.get(addTo).appendChild(element);
-            Logger.logINFO("Added String " + element.getWholeText() + " to " + elements.get(addTo).getTagName());
+            Logger.logALL("Added String " + element.getWholeText() + " to " + elements.get(addTo).getTagName());
         } catch (Exception e) {
             Logger.logERROR(log + "appendElement] " + e);
         }
@@ -115,7 +115,7 @@ public class XML {
     public void appendToDoc(int element) {
         try {
             document.appendChild(elements.get(element));
-            Logger.logINFO("Added " + elements.get(element) + " to Document");
+            Logger.logALL("Added " + elements.get(element) + " to Document");
         } catch (Exception e) {
             Logger.logERROR(log + "appendToDoc] " + e);
         }
@@ -124,7 +124,7 @@ public class XML {
     public void setAttribute(int element, String attribute, String value) {
         try {
             elements.get(element).setAttribute(attribute, value);
-            Logger.logINFO("Added Attribute " + attribute + " with value of " + value + " to element " + elements.get(element).getTagName());
+            Logger.logALL("Added Attribute " + attribute + " with value of " + value + " to element " + elements.get(element).getTagName());
         } catch (Exception e) {
             Logger.logERROR(log + "setAttribute] " + e);
         }
