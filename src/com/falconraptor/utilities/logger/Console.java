@@ -2,19 +2,18 @@ package com.falconraptor.utilities.logger;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.ArrayList;
+import java.awt.event.*;
+import java.util.*;
 
 public class Console extends JFrame {
     private final String log = "[com.falconraptor.utilities.logger.Console.";
-    public boolean closed = false;
+    public boolean closed = true;
     private JTextArea text = new JTextArea();
     private ArrayList<String> logtext = new ArrayList<>(0);
 
     public Console() {
         super("Console");
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setContentPane(setGUI());
         setLocationRelativeTo(null);
         setVisible(false);
@@ -23,35 +22,35 @@ public class Console extends JFrame {
         addWindowListener(windowlisten());
     }
 
+    @Override
+    public void setVisible (boolean b) {
+        closed = b;
+        super.setVisible(b);
+    }
+
     private WindowListener windowlisten() {
         return new WindowListener() {
             @Override
-            public void windowOpened(WindowEvent e) {
+            public void windowOpened (WindowEvent e) {
             }
-
             @Override
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing (WindowEvent e) {
             }
-
             @Override
             public void windowClosed(WindowEvent e) {
                 closed = true;
             }
-
             @Override
-            public void windowIconified(WindowEvent e) {
+            public void windowIconified (WindowEvent e) {
             }
-
             @Override
-            public void windowDeiconified(WindowEvent e) {
+            public void windowDeiconified (WindowEvent e) {
             }
-
             @Override
-            public void windowActivated(WindowEvent e) {
+            public void windowActivated (WindowEvent e) {
             }
-
             @Override
-            public void windowDeactivated(WindowEvent e) {
+            public void windowDeactivated (WindowEvent e) {
             }
         };
     }
@@ -70,6 +69,7 @@ public class Console extends JFrame {
     }
 
     public void updateConsole(String obj) {
+        if (closed) return;
         logtext.add(obj);
         text.setEditable(true);
         if (logtext.size() > 15) {
