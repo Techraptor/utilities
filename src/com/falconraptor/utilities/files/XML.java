@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class XML {
     private final String log = "[com.falconraptor.utilities.files.XML.";
-    public ArrayList<Element> elements = new ArrayList<>(0);
+    private final ArrayList<Element> elements = new ArrayList<>(0);
     private Document document;
 
     public NodeList readXMLNode(String filename) {
@@ -103,7 +103,7 @@ public class XML {
         }
     }
 
-    public void appendElement(int addTo, Text element) {
+    void appendElement(int addTo, Text element) {
         try {
             elements.get(addTo).appendChild(element);
             Logger.logALL("Added String " + element.getWholeText() + " to " + elements.get(addTo).getTagName());
@@ -152,7 +152,7 @@ public class XML {
         }
     }
 
-    public void fixOrganization(String filename) {
+    void fixOrganization(String filename) {
         Read.Read(filename);
         String text = Read.read();
         text = text.replaceAll("><", ">!!!!<");
@@ -162,7 +162,7 @@ public class XML {
         int tabs = -2;
         String temp = " ";
         for (String s : text2) {
-            if (s.indexOf("/") == -1 || temp.indexOf("/") == -1) tabs += 1;
+            if (!s.contains("/") || !temp.contains("/")) tabs += 1;
             else if (s.substring(0, 2).equals("</")) tabs -= 1;
             for (int i = 0; i < tabs; i++) s = "     " + s;
             textarraylist.add(s);

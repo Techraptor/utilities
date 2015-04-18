@@ -2,21 +2,21 @@ package com.falconraptor.utilities;
 
 import com.falconraptor.utilities.logger.Logger;
 
-public class Colors {
-    private static String log = "[com.falconraptor.utilities.Colors.";
+class Colors {
 
-    public static int[] checkerrors(String test) {
-        return new int[]{findnum(test, "r="), findnum(test, "g="), findnum(test, "b=")};
+    public static int[] checkErrors(String test) {
+        return new int[]{findNum(test, "r="), findNum(test, "g="), findNum(test, "b=")};
     }
 
-    public static int findnum(String abc, String find) {
-        int a = 5, t;
+    private static int findNum(String abc, String find) {
+        int a = 5;
         for (int i = 0; i < 4; i++) {
             try {
-                t = Integer.parseInt(abc.substring(abc.indexOf(find) + 2, abc.indexOf(find) + a));
+                Integer.parseInt(abc.substring(abc.indexOf(find) + 2, abc.indexOf(find) + a));
                 break;
             } catch (Exception e) {
-                if (Logger.level <= 5) Logger.logERROR(log + "findnum] " + e);
+                String log = "[com.falconraptor.utilities.Colors.";
+                if (Logger.level <= 5) Logger.logERROR(log + "findNum] " + e);
                 a--;
             }
         }

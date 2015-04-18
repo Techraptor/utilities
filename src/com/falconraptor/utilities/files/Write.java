@@ -7,11 +7,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-@SuppressWarnings("ResultOfMethodCallIgnored")
 public class Write {
-    public static String log = "[com.falconraptor.utilities.files.Write.";
+    private static final String log = "[com.falconraptor.utilities.files.Write.";
     private static BufferedWriter writer;
-    private static FileWriter fw;
     private static File file;
 
     public static void Write(String filename, boolean hidden) {
@@ -25,7 +23,7 @@ public class Write {
                 file.createNewFile();
                 Logger.logDEBUG(log + "Write] File Recreated");
             }
-            fw = new FileWriter(file.getAbsoluteFile());
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
             writer = new BufferedWriter(fw);
             if (hidden) hide();
         } catch (Exception e) {
@@ -45,7 +43,7 @@ public class Write {
         }
     }
 
-    public static void write(String out) {
+    private static void write(String out) {
         try {
             writer.write(out);
         } catch (Exception e) {
@@ -53,7 +51,7 @@ public class Write {
         }
     }
 
-    public static void newline() {
+    private static void newline() {
         try {
             writer.newLine();
         } catch (Exception e) {
@@ -70,7 +68,7 @@ public class Write {
         }
     }
 
-    public static void hide() {
+    private static void hide() {
         try {
             // win32 command line variant
             Process p = Runtime.getRuntime().exec("attrib +h " + file.getPath());
@@ -80,10 +78,10 @@ public class Write {
         }
     }
 
-    public static void write(ArrayList<String> out) {
+    public static void write(ArrayList<?> out) {
         try {
-            for (String s : out) {
-                write(s);
+            for (Object s : out) {
+                write(s.toString());
                 newline();
             }
         } catch (Exception e) {

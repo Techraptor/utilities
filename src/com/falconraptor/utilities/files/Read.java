@@ -7,21 +7,22 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class Read {
-    public static String log = "[com.falconraptor.utilities.files.Read.";
+    private static final String log = "[com.falconraptor.utilities.files.Read.";
     private static BufferedReader reader;
-    private static File file;
 
-    public static void Read(String filename) {
+    public static boolean Read(String filename) {
         try {
-            file = new File(filename);
+            File file = new File(filename);
             if (!file.exists()) {
                 Logger.logERROR(filename + " does not exist!");
-                return;
+                return false;
             }
             reader = new BufferedReader(new FileReader(filename));
         } catch (Exception e) {
             Logger.logERROR(log + "Read] " + e);
+            return false;
         }
+        return true;
     }
 
     public static String read() {
@@ -42,12 +43,12 @@ public class Read {
 
     public static String readjar(String filename) {
         try {
-            InputStream in = Read.class.getResourceAsStream(filename);
+            InputStream in = Read.class.getClassLoader().getResourceAsStream(filename);
             BufferedReader input = new BufferedReader(new InputStreamReader(in));
             String line = input.readLine();
             String out = "";
             while (line != null) {
-                out += line + "!";
+                out += line + "↔";
                 line = input.readLine();
             }
             input.close();
