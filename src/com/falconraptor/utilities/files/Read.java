@@ -43,8 +43,7 @@ public class Read {
 
     public static String readjar(String filename) {
         try {
-            InputStream in = Read.class.getClassLoader().getResourceAsStream(filename);
-            BufferedReader input = new BufferedReader(new InputStreamReader(in));
+            BufferedReader input = new BufferedReader(new InputStreamReader(Read.class.getClassLoader().getResourceAsStream(filename)));
             String line = input.readLine();
             String out = "";
             while (line != null) {
