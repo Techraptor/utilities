@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class XML {
     private final String log = "[com.falconraptor.utilities.files.XML.";
-    private final ArrayList<Element> elements = new ArrayList<>(0);
+    public final ArrayList<Element> elements = new ArrayList<>(0);
     private Document document;
 
     public NodeList readXMLNode(String filename) {
