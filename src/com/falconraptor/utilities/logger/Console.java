@@ -69,7 +69,6 @@ public class Console extends JFrame {
         text.setColumns(50);
         text.setRows(15);
         text.setAutoscrolls(true);
-        //text.setLineWrap(true);
         text.setFont(new Font("Times New Roman", Font.PLAIN, 14));
         text.setText("");
         return p;
