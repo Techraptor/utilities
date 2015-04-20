@@ -29,7 +29,7 @@ public class XML {
                 return null;
             }
             Logger.logINFO("Reading XML File: " + filename);
-            Document doc = readXMLDoc(fXmlFile);
+            Document doc = readXMLDoc(filename);
             doc.getDocumentElement().normalize();
             NodeList nodeList = doc.getElementsByTagName(doc.getDocumentElement().getNodeName());
             Logger.logINFO("Done Reading XML File: " + filename);
