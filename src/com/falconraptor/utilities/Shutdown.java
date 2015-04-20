@@ -3,8 +3,8 @@ package com.falconraptor.utilities;
 import com.falconraptor.utilities.files.Write;
 import com.falconraptor.utilities.logger.Logger;
 
-class Shutdown {
-    private String packagename;
+public class Shutdown {
+    public String packagename;
 
     public void attachShutDownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread() {
