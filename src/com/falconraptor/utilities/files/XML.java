@@ -29,9 +29,7 @@ public class XML {
                 return null;
             }
             Logger.logINFO("Reading XML File: " + filename);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            Document doc = readXMLDoc(fXmlFile);
             doc.getDocumentElement().normalize();
             NodeList nodeList = doc.getElementsByTagName(doc.getDocumentElement().getNodeName());
             Logger.logINFO("Done Reading XML File: " + filename);
@@ -50,9 +48,7 @@ public class XML {
                 return null;
             }
             Logger.logINFO("Reading XML File: " + filename);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(fXmlFile);
             doc.getDocumentElement().normalize();
             Logger.logINFO("Done Reading XML File: " + filename);
             return doc;
@@ -66,9 +62,7 @@ public class XML {
         try {
             InputStream fXmlFile = getClass().getClassLoader().getResourceAsStream(filename);
             Logger.logALL("Reading XML File: " + filename);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(fXmlFile);
             doc.getDocumentElement().normalize();
             Logger.logINFO("Done Reading XML File: " + filename);
             return doc;
@@ -80,9 +74,7 @@ public class XML {
 
     public void setNewFile() {
         try {
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            document = docBuilder.newDocument();
+            document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             Logger.logINFO("New File Set");
         } catch (Exception e) {
             Logger.logERROR(log + "createNewFile] " + e);
@@ -132,11 +124,9 @@ public class XML {
 
     public void saveFile(String filename) {
         try {
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(new File(filename));
-            transformer.transform(source, result);
+            TransformerFactory.newInstance().newTransformer().transform(source, result);
             Logger.logINFO("XML File: " + filename + " saved");
             fixOrganization(filename);
         } catch (Exception e) {
@@ -154,10 +144,7 @@ public class XML {
 
     void fixOrganization(String filename) {
         Read.Read(filename);
-        String text = Read.read();
-        text = text.replaceAll("><", ">!!!!<");
-        text = text.replaceAll("↔", "");
-        String[] text2 = text.split("!!!!");
+        String[] text2 = Read.read().replaceAll("><", ">!!!!<").replaceAll("↔", "").split("!!!!");
         ArrayList<String> textarraylist = new ArrayList<>(0);
         int tabs = -2;
         String temp = " ";
