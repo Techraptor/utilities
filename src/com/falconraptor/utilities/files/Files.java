@@ -34,7 +34,6 @@ public class Files {
     }
 
     public static void downloadfile(String url, String filename) {
-
         try {
             URL download = new URL(url);
             Logger.logDEBUG(log + "downloadfile] Starting Download of " + filename + " from " + url);
