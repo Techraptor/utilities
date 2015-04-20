@@ -2,13 +2,13 @@ package com.falconraptor.utilities;
 
 import com.falconraptor.utilities.logger.Logger;
 
-class Colors {
+public class Colors {
 
     public static int[] checkErrors(String test) {
         return new int[]{findNum(test, "r="), findNum(test, "g="), findNum(test, "b=")};
     }
 
-    private static int findNum(String abc, String find) {
+    public static int findNum(String abc, String find) {
         int a = 5;
         for (int i = 0; i < 4; i++) {
             try {
