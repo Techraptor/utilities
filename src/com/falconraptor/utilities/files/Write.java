@@ -43,7 +43,7 @@ public class Write {
         }
     }
 
-    private static void write(String out) {
+    public static void write(String out) {
         try {
             writer.write(out);
         } catch (Exception e) {
@@ -51,7 +51,16 @@ public class Write {
         }
     }
 
-    private static void newline() {
+    public static void writeln(String out) {
+        try {
+            write(out);
+            newline();
+        } catch (Exception e) {
+            Logger.logERROR(log + "write] " + e);
+        }
+    }
+
+    public static void newline() {
         try {
             writer.newLine();
         } catch (Exception e) {
@@ -80,10 +89,7 @@ public class Write {
 
     public static void write(ArrayList<?> out) {
         try {
-            for (Object s : out) {
-                write(s.toString());
-                newline();
-            }
+            for (Object s : out) writeln(s.toString());
         } catch (Exception e) {
             Logger.logERROR(log + "write] " + e);
         }

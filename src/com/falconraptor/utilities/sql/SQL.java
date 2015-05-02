@@ -25,4 +25,8 @@ public class SQL {
     public Statement getStatement() throws Exception {
         return c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
     }
+
+    public void close() throws Exception {
+        c.close();
+    }
 }
