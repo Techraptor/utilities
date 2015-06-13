@@ -10,6 +10,6 @@
     <orderEntry type="library" name="gtranslateapi-1.0" level="project" />
     <orderEntry type="library" name="sqljdbc4-4.0.2206.100" level="project" />
     <orderEntry type="library" name="commons-net-3.3" level="project" />
-    <orderEntry type="library" name="ucanaccess" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.11.6" level="application" />
   </component>
 </module>
