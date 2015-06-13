@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Logger {
-    public static int level = 3;
     public static final Console console = new Console();
     private static final int ALL = 1;
     private static final int DEBUG = 3;
@@ -14,6 +13,7 @@ public class Logger {
     private static final int WARNING = 4;
     private static final int INFO = 2;
     private static final ArrayList<String> log = new ArrayList<>(0);
+    public static int level = 3;
 
     private static Calendar getCalendar() {
         return Calendar.getInstance();

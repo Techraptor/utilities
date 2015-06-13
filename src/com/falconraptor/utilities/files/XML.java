@@ -6,9 +6,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -17,8 +15,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class XML {
-    private final String log = "[com.falconraptor.utilities.files.XML.";
     public final ArrayList<Element> elements = new ArrayList<>(0);
+    private final String log = "[com.falconraptor.utilities.files.XML.";
     private Document document;
 
     public NodeList readXMLNode(String filename) {

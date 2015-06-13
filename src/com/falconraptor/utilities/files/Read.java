@@ -4,7 +4,10 @@ import com.falconraptor.utilities.logger.Logger;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 
 public class Read {
     private static final String log = "[com.falconraptor.utilities.files.Read.";
