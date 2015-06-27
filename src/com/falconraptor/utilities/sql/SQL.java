@@ -22,4 +22,8 @@ public class SQL {
 	public Statement getStatement () throws Exception {
 		return this.c.createStatement(1004, 1007);
 	}
+
+	public void close () throws SQLException {
+		c.close();
+	}
 }
