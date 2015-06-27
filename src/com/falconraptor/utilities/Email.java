@@ -28,7 +28,8 @@ public class Email {
 		email.addRecipient(r.substring(0, r.indexOf("@")), r, (t == TO) ? RecipientType.TO : (t == CC) ? RecipientType.CC : (t == BCC) ? RecipientType.BCC : null);
 	}
 
-	public void addAttachment (String n, String m) {
+	public void addAttachment (String n, String m) throws FileNotFoundException {
+		if (!new File(n).exists()) throw new FileNotFoundException("File '" + n + "' was not found");
 		email.addAttachment(n, new DataSource() {
 			@Override
 			public InputStream getInputStream () throws IOException {
