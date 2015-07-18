@@ -2,7 +2,9 @@ package com.falconraptor.utilities.files;
 
 import com.falconraptor.utilities.logger.Logger;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class Write {
@@ -10,7 +12,7 @@ public class Write {
     private BufferedWriter writer;
     private File file;
 
-    public static void makeDir (String directory) {
+    public static void makeDir(String directory) {
         try {
             File dir = new File(directory);
             if (!dir.exists()) {
@@ -22,7 +24,7 @@ public class Write {
         }
     }
 
-    public void Write (String filename, boolean hidden) {
+    public void Write(String filename, boolean hidden) {
         try {
             file = new File(filename);
             if (!file.exists()) {
@@ -41,7 +43,7 @@ public class Write {
         }
     }
 
-    private void hide () {
+    private void hide() {
         try {
             // win32 command line variant
             Process p = Runtime.getRuntime().exec("attrib +h " + file.getPath());
@@ -51,7 +53,7 @@ public class Write {
         }
     }
 
-    public void close () {
+    public void close() {
         try {
             writer.close();
             Logger.logDEBUG(log + "close] File Saved");
@@ -60,7 +62,7 @@ public class Write {
         }
     }
 
-    public void write (ArrayList<?> out) {
+    public void write(ArrayList<?> out) {
         try {
             for (Object s : out) writeln(s.toString());
         } catch (Exception e) {
@@ -68,7 +70,7 @@ public class Write {
         }
     }
 
-    public void writeln (String out) {
+    public void writeln(String out) {
         try {
             write(out);
             newline();
@@ -77,7 +79,7 @@ public class Write {
         }
     }
 
-    public void write (String out) {
+    public void write(String out) {
         try {
             writer.write(out);
         } catch (Exception e) {
@@ -85,7 +87,7 @@ public class Write {
         }
     }
 
-    public void newline () {
+    public void newline() {
         try {
             writer.newLine();
         } catch (Exception e) {

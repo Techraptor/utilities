@@ -1,7 +1,10 @@
 package com.falconraptor.utilities.files;
 
 import com.falconraptor.utilities.logger.Logger;
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.TransformerFactory;
@@ -141,7 +144,7 @@ public class XML {
         Logger.logINFO("File Organized");
     }
 
-    public void addTextToElement (int element, String text) {
+    public void addTextToElement(int element, String text) {
         try {
             appendElement(element, document.createTextNode(text));
         } catch (Exception e) {
@@ -149,7 +152,7 @@ public class XML {
         }
     }
 
-    void appendElement (int addTo, Text element) {
+    void appendElement(int addTo, Text element) {
         try {
             elements.get(addTo).appendChild(element);
             Logger.logALL("Added String " + element.getWholeText() + " to " + elements.get(addTo).getTagName());
