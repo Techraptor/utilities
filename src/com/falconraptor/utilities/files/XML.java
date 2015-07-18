@@ -1,10 +1,7 @@
 package com.falconraptor.utilities.files;
 
 import com.falconraptor.utilities.logger.Logger;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
+import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.TransformerFactory;
@@ -93,15 +90,6 @@ public class XML {
         }
     }
 
-    void appendElement(int addTo, Text element) {
-        try {
-            elements.get(addTo).appendChild(element);
-            Logger.logALL("Added String " + element.getWholeText() + " to " + elements.get(addTo).getTagName());
-        } catch (Exception e) {
-            Logger.logERROR(log + "appendElement] " + e);
-        }
-    }
-
     public void appendToDoc(int element) {
         try {
             document.appendChild(elements.get(element));
@@ -132,17 +120,10 @@ public class XML {
         }
     }
 
-    public void addTextToElement(int element, String text) {
-        try {
-            appendElement(element, document.createTextNode(text));
-        } catch (Exception e) {
-            Logger.logERROR(log + "addTextToElement] " + e);
-        }
-    }
-
     void fixOrganization(String filename) {
-        Read.Read(filename);
-        String[] text2 = Read.read().replaceAll("><", ">!!!!<").replaceAll("↔", "").split("!!!!");
+        Read read = new Read();
+        read.Read(filename);
+        ArrayList<String> text2 = read.read();
         ArrayList<String> textarraylist = new ArrayList<>(0);
         int tabs = -2;
         String temp = " ";
@@ -153,9 +134,27 @@ public class XML {
             textarraylist.add(s);
             temp = s;
         }
-        Write.Write(filename, false);
-        Write.write(textarraylist);
-        Write.close();
+        Write write = new Write();
+        write.Write(filename, false);
+        write.write(textarraylist);
+        write.close();
         Logger.logINFO("File Organized");
+    }
+
+    public void addTextToElement (int element, String text) {
+        try {
+            appendElement(element, document.createTextNode(text));
+        } catch (Exception e) {
+            Logger.logERROR(log + "addTextToElement] " + e);
+        }
+    }
+
+    void appendElement (int addTo, Text element) {
+        try {
+            elements.get(addTo).appendChild(element);
+            Logger.logALL("Added String " + element.getWholeText() + " to " + elements.get(addTo).getTagName());
+        } catch (Exception e) {
+            Logger.logERROR(log + "appendElement] " + e);
+        }
     }
 }

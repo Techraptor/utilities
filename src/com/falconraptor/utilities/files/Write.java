@@ -2,17 +2,27 @@ package com.falconraptor.utilities.files;
 
 import com.falconraptor.utilities.logger.Logger;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Write {
     private static final String log = "[com.falconraptor.utilities.files.Write.";
-    private static BufferedWriter writer;
-    private static File file;
+    private BufferedWriter writer;
+    private File file;
 
-    public static void Write(String filename, boolean hidden) {
+    public static void makeDir (String directory) {
+        try {
+            File dir = new File(directory);
+            if (!dir.exists()) {
+                dir.mkdirs();
+                Logger.logDEBUG(log + "makeDir] Directory Created");
+            }
+        } catch (Exception e) {
+            Logger.logERROR(log + "makeDir] " + e);
+        }
+    }
+
+    public void Write (String filename, boolean hidden) {
         try {
             file = new File(filename);
             if (!file.exists()) {
@@ -31,53 +41,7 @@ public class Write {
         }
     }
 
-    public static void makeDir(String directory) {
-        try {
-            File dir = new File(directory);
-            if (!dir.exists()) {
-                dir.mkdirs();
-                Logger.logDEBUG(log + "makeDir] Directory Created");
-            }
-        } catch (Exception e) {
-            Logger.logERROR(log + "makeDir] " + e);
-        }
-    }
-
-    public static void write(String out) {
-        try {
-            writer.write(out);
-        } catch (Exception e) {
-            Logger.logERROR(log + "write] " + e);
-        }
-    }
-
-    public static void writeln(String out) {
-        try {
-            write(out);
-            newline();
-        } catch (Exception e) {
-            Logger.logERROR(log + "write] " + e);
-        }
-    }
-
-    public static void newline() {
-        try {
-            writer.newLine();
-        } catch (Exception e) {
-            Logger.logERROR(log + "newline] " + e);
-        }
-    }
-
-    public static void close() {
-        try {
-            writer.close();
-            Logger.logDEBUG(log + "close] File Saved");
-        } catch (Exception e) {
-            Logger.logERROR(log + "close] " + e);
-        }
-    }
-
-    private static void hide() {
+    private void hide () {
         try {
             // win32 command line variant
             Process p = Runtime.getRuntime().exec("attrib +h " + file.getPath());
@@ -87,11 +51,45 @@ public class Write {
         }
     }
 
-    public static void write(ArrayList<?> out) {
+    public void close () {
+        try {
+            writer.close();
+            Logger.logDEBUG(log + "close] File Saved");
+        } catch (Exception e) {
+            Logger.logERROR(log + "close] " + e);
+        }
+    }
+
+    public void write (ArrayList<?> out) {
         try {
             for (Object s : out) writeln(s.toString());
         } catch (Exception e) {
             Logger.logERROR(log + "write] " + e);
+        }
+    }
+
+    public void writeln (String out) {
+        try {
+            write(out);
+            newline();
+        } catch (Exception e) {
+            Logger.logERROR(log + "write] " + e);
+        }
+    }
+
+    public void write (String out) {
+        try {
+            writer.write(out);
+        } catch (Exception e) {
+            Logger.logERROR(log + "write] " + e);
+        }
+    }
+
+    public void newline () {
+        try {
+            writer.newLine();
+        } catch (Exception e) {
+            Logger.logERROR(log + "newline] " + e);
         }
     }
 }

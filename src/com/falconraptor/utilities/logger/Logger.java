@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Logger {
+    public static int level = 3;
     public static final Console console = new Console();
     private static final int ALL = 1;
     private static final int DEBUG = 3;
@@ -13,7 +14,6 @@ public class Logger {
     private static final int WARNING = 4;
     private static final int INFO = 2;
     private static final ArrayList<String> log = new ArrayList<>(0);
-    public static int level = 3;
 
     private static Calendar getCalendar() {
         return Calendar.getInstance();
@@ -51,8 +51,9 @@ public class Logger {
     }
 
     public static void saveLog(String file) {
-        Write.Write(file.substring(0, file.lastIndexOf(".")) + formatCalender(getCalendar()).substring(0, formatCalender(getCalendar()).lastIndexOf(":")).replaceAll(" ", "").replaceAll(":", ";") + "]" + file.substring(file.lastIndexOf(".")), false);
-        Write.write(log);
-        Write.close();
+        Write write = new Write();
+        write.Write(file.substring(0, file.lastIndexOf(".")) + formatCalender(getCalendar()).substring(0, formatCalender(getCalendar()).lastIndexOf(":")).replaceAll(" ", "").replaceAll(":", ";") + "]" + file.substring(file.lastIndexOf(".")), false);
+        write.write(log);
+        write.close();
     }
 }

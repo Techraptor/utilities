@@ -4,14 +4,12 @@ import com.falconraptor.utilities.logger.Logger;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.ArrayList;
 
 public class Read {
     private static final String log = "[com.falconraptor.utilities.files.Read.";
-    private static BufferedReader reader;
+    private BufferedReader reader;
 
     public static boolean Read(String filename) {
         try {
@@ -28,19 +26,19 @@ public class Read {
         return true;
     }
 
-    public static String read() {
+    public ArrayList<String> read () {
         try {
             String line = reader.readLine();
-            String out = "";
+            ArrayList<String> out = new ArrayList<>(0);
             while (line != null) {
-                out += line + "↔";
+                out.add(line);
                 line = reader.readLine();
             }
             reader.close();
             return out;
         } catch (Exception e) {
             Logger.logERROR(log + "read] " + e);
-            return "";
+            return null;
         }
     }
 
