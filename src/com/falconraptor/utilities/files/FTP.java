@@ -1,9 +1,7 @@
 package com.falconraptor.utilities.files;
 
 import com.falconraptor.utilities.logger.Logger;
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPReply;
-import org.apache.commons.net.ftp.FTPSClient;
+import org.apache.commons.net.ftp.*;
 import org.apache.commons.net.util.TrustManagerUtils;
 
 import java.io.FileInputStream;
@@ -39,6 +37,7 @@ public class FTP {
     }
 
     public void uploadFile(String f) {
+        if (!loggedIn) return;
         Logger.logDEBUG(log + "uploadFile] Starting Upload of " + f);
         try {
             ftpClient.storeFile(f, new FileInputStream(f));
