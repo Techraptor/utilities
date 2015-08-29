@@ -11,6 +11,11 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/deps/javax.mail.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/deps/log4j-1.2.15.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/deps/simple-java-mail-2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/deps/UCanAccess-2.0.9.4-bin/ucanaccess-2.0.9.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/deps/UCanAccess-2.0.9.4-bin/lib/jackcess-2.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/deps/UCanAccess-2.0.9.4-bin/lib/hsqldb.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/deps/UCanAccess-2.0.9.4-bin/lib/commons-logging-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/deps/UCanAccess-2.0.9.4-bin/lib/commons-lang-2.6.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
