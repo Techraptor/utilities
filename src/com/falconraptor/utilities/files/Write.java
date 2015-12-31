@@ -19,12 +19,10 @@ public class Write {
                 dir.mkdirs();
                 Logger.logDEBUG(log + "makeDir] Directory Created");
             }
-        } catch (Exception e) {
-            Logger.logERROR(log + "makeDir] " + e);
-        }
+        } catch (Exception e) {Logger.logERROR(log + "makeDir] " + e);}
     }
 
-    public void Write(String filename, boolean hidden) {
+    public Write(String filename, boolean hidden) {
         try {
             file = new File(filename);
             if (!file.exists()) {
@@ -38,9 +36,11 @@ public class Write {
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             writer = new BufferedWriter(fw);
             if (hidden) hide();
-        } catch (Exception e) {
-            Logger.logERROR(log + "Write] " + e);
-        }
+        } catch (Exception e) {Logger.logERROR(log + "Write] " + e);}
+    }
+
+    public Write(String filename) {
+        this(filename,false);
     }
 
     private void hide() {
@@ -67,6 +67,14 @@ public class Write {
             for (Object s : out) writeln(s.toString());
         } catch (Exception e) {
             Logger.logERROR(log + "write] " + e);
+        }
+    }
+
+    public void write(Object[] out){
+        try{
+            for (Object o:out) writeln(o.toString());
+        }catch (Exception e){
+            Logger.logERROR(log+"write] "+e);
         }
     }
 

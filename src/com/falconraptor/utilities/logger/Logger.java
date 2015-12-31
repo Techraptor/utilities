@@ -51,8 +51,7 @@ public class Logger {
     }
 
     public static void saveLog(String file) {
-        Write write = new Write();
-        write.Write(file.substring(0, file.lastIndexOf(".")) + formatCalender(getCalendar()).substring(0, formatCalender(getCalendar()).lastIndexOf(":")).replaceAll(" ", "").replaceAll(":", ";") + "]" + file.substring(file.lastIndexOf(".")), false);
+        Write write = new Write(file.substring(0, file.lastIndexOf(".")) + formatCalender(getCalendar()).substring(0, formatCalender(getCalendar()).lastIndexOf(":")).replaceAll(" ", "").replaceAll(":", ";") + "]" + file.substring(file.lastIndexOf(".")), false);
         write.write(log);
         write.close();
     }

@@ -26,6 +26,14 @@ public class Email {
         properties.put("mail.smtp.ssl.trust", "*");
     }
 
+    public void setBody(String b){
+        email.setTextHTML(b);
+    }
+
+    public void setSubject(String s){
+        email.setSubject(s);
+    }
+
     public void addRecipient(String r, int t) {
         email.addRecipient(r.substring(0, r.indexOf("@")), r, (t == TO) ? RecipientType.TO : (t == CC) ? RecipientType.CC : (t == BCC) ? RecipientType.BCC : null);
     }

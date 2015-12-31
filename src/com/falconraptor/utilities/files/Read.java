@@ -41,19 +41,12 @@ public class Read {
         return buff;
     }
 
-    public boolean Read(String filename) {
+    public Read(String filename) {
         try {
             File file = new File(filename);
-            if (!file.exists()) {
-                Logger.logERROR(filename + " does not exist!");
-                return false;
-            }
+            if (!file.exists()) Logger.logERROR(filename + " does not exist!");
             reader = new BufferedReader(new FileReader(filename));
-        } catch (Exception e) {
-            Logger.logERROR(log + "Read] " + e);
-            return false;
-        }
-        return true;
+        } catch (Exception e) {Logger.logERROR(log + "Read] " + e);}
     }
 
     public ArrayList<String> read() {

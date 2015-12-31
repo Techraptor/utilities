@@ -124,8 +124,7 @@ public class XML {
     }
 
     void fixOrganization(String filename) {
-        Read read = new Read();
-        read.Read(filename);
+        Read read = new Read(filename);
         ArrayList<String> text2 = read.read();
         ArrayList<String> textarraylist = new ArrayList<>(0);
         int tabs = -2;
@@ -137,8 +136,7 @@ public class XML {
             textarraylist.add(s);
             temp = s;
         }
-        Write write = new Write();
-        write.Write(filename, false);
+        Write write = new Write(filename, false);
         write.write(textarraylist);
         write.close();
         Logger.logINFO("File Organized");

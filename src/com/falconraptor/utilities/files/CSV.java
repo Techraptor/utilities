@@ -11,12 +11,14 @@ public class CSV {
 
 	public CSV (String name, Boolean w) {
 		if (w) {
-			write = new Write();
-			write.Write(name, false);
+			write = new Write(name);
 		} else {
-			read = new Read();
-			read.Read(name);
+			read = new Read(name);
 		}
+	}
+
+	public CSV(String n){
+		this(n,false);
 	}
 
 	public void close () throws Exception {

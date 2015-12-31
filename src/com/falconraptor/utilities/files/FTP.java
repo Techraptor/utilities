@@ -5,11 +5,12 @@ import org.apache.commons.net.ftp.*;
 import org.apache.commons.net.util.TrustManagerUtils;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class FTP {
     private static final String log = "[com.falconraptor.utilities.files.FTP.";
-    FTPClient ftpClient;
-    boolean loggedIn = false;
+    public FTPClient ftpClient;
+    public boolean loggedIn = false;
 
     public FTP(String u, String p, String h, Boolean s) {
         try {
@@ -32,8 +33,12 @@ public class FTP {
             ftpClient.setPassiveNatWorkaround(true);
             loggedIn = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.logERROR(log + "FTP] " + e);
         }
+    }
+
+    public FTP(String u,String p,String h){
+        this(u,p,h,false);
     }
 
     public void uploadFile(String f) {
@@ -54,7 +59,16 @@ public class FTP {
             if (ftpClient.isConnected()) ftpClient.disconnect();
             loggedIn = false;
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.logERROR(log + "logout] " + e);
+        }
+    }
+
+    public InputStream downloadFile(String file){
+        try{
+            return ftpClient.retrieveFileStream(file);
+        }catch(Exception e){
+            Logger.logERROR(log + "downloadFile] " + e);
+            return null;
         }
     }
 }
