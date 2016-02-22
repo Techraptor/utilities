@@ -80,7 +80,10 @@ public class FTP {
     public Boolean downloadFile(String file) {
         try {
             FileOutputStream os = new FileOutputStream(new File(file));
-            return ftpClient.retrieveFile(file, os);
+            Boolean done = ftpClient.retrieveFile(file, os);
+            os.flush();
+            os.close();
+            return done;
         } catch (Exception e) {
             Logger.logERROR(log + "downloadFile] " + e);
             return null;
