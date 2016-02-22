@@ -1,10 +1,14 @@
 package com.falconraptor.utilities.files;
 
 import com.falconraptor.utilities.logger.Logger;
-import org.apache.commons.net.ftp.*;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPReply;
+import org.apache.commons.net.ftp.FTPSClient;
 import org.apache.commons.net.util.TrustManagerUtils;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 
 public class FTP {
@@ -41,15 +45,16 @@ public class FTP {
         this(u,p,h,false);
     }
 
-    public void uploadFile(String f) {
-        if (!loggedIn) return;
+    public Boolean uploadFile(String f) {
+        if (!loggedIn) return false;
         Logger.logDEBUG(log + "uploadFile] Starting Upload of " + f);
         try {
-            ftpClient.storeFile(f, new FileInputStream(f));
-            ftpClient.noop();
+            Boolean done = ftpClient.storeFile(f, new FileInputStream(f));
             Logger.logDEBUG(log + "uploadFile] Upload Complete");
+            return done;
         } catch (Exception ex) {
             Logger.logERROR(log + "uploadFile] " + ex);
+            return false;
         }
     }
 
@@ -63,10 +68,20 @@ public class FTP {
         }
     }
 
-    public InputStream downloadFile(String file){
+    public InputStream downloadFileStream(String file) {
         try{
             return ftpClient.retrieveFileStream(file);
         }catch(Exception e){
+            Logger.logERROR(log + "downloadFile] " + e);
+            return null;
+        }
+    }
+
+    public Boolean downloadFile(String file) {
+        try {
+            FileOutputStream os = new FileOutputStream(new File(file));
+            return ftpClient.retrieveFile(file, os);
+        } catch (Exception e) {
             Logger.logERROR(log + "downloadFile] " + e);
             return null;
         }
