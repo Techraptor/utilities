@@ -1,5 +1,6 @@
 package com.falconraptor.utilities;
 
+import com.falconraptor.utilities.logger.Logger;
 import org.codemonkey.simplejavamail.Mailer;
 
 import javax.activation.DataSource;
@@ -14,8 +15,9 @@ public class Email {
     public static final int TO = 1;
     public static final int CC = 2;
     public static final int BCC = 3;
-    final org.codemonkey.simplejavamail.Email email = new org.codemonkey.simplejavamail.Email();
-    Properties properties = new Properties();
+    private static final String log = "[com.falconraptor.utilities.Email.";
+    public final org.codemonkey.simplejavamail.Email email = new org.codemonkey.simplejavamail.Email();
+    public Properties properties = new Properties();
 
     public Email(String u, String s, String b) {
         email.setFromAddress(u.substring(0, u.indexOf("@")), u);
@@ -26,19 +28,22 @@ public class Email {
         properties.put("mail.smtp.ssl.trust", "*");
     }
 
-    public void setBody(String b){
+    public Email setBody(String b) {
         email.setTextHTML(b);
+        return this;
     }
 
-    public void setSubject(String s){
+    public Email setSubject(String s) {
         email.setSubject(s);
+        return this;
     }
 
-    public void addRecipient(String r, int t) {
+    public Email addRecipient(String r, int t) {
         email.addRecipient(r.substring(0, r.indexOf("@")), r, (t == TO) ? RecipientType.TO : (t == CC) ? RecipientType.CC : (t == BCC) ? RecipientType.BCC : null);
+        return this;
     }
 
-    public void addAttachment(String n, String m) throws FileNotFoundException {
+    public Email addAttachment(String n, String m) throws FileNotFoundException {
         if (!new File(n).exists()) throw new FileNotFoundException("File '" + n + "' was not found");
         email.addAttachment(n, new DataSource() {
             @Override
@@ -61,6 +66,7 @@ public class Email {
                 return n;
             }
         });
+        return this;
     }
 
     public void send(String u, String p, String h, int po) {
@@ -72,7 +78,17 @@ public class Email {
                 return new PasswordAuthentication(u, p);
             }
         }));
-        mailer.createMailSession(h, po, u, p);
+        Session session = mailer.createMailSession(h, po, u, p);
         mailer.sendMail(email);
+        properties.clear();
+        try {
+            session.getTransport().close();
+            session.getStore().close();
+            session.getDebugOut().flush();
+            session.getDebugOut().close();
+            session.getProperties().clear();
+        } catch (Exception e) {
+            Logger.logERROR(log);
+        }
     }
 }

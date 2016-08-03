@@ -19,6 +19,25 @@ public class XML {
     private final String log = "[com.falconraptor.utilities.files.XML.";
     private Document document;
 
+    public static void fixOrganization(String filename) {
+        Reader reader = new Reader(filename);
+        ArrayList<String> text2 = reader.read();
+        ArrayList<String> textarraylist = new ArrayList<>(0);
+        int tabs = -2;
+        String temp = " ";
+        for (String s : text2) {
+            if (!s.contains("/") || !temp.contains("/")) tabs += 1;
+            else if (s.substring(0, 2).equals("</")) tabs -= 1;
+            for (int i = 0; i < tabs; i++) s = "     " + s;
+            textarraylist.add(s);
+            temp = s;
+        }
+        Writer writer = new Writer(filename, false);
+        writer.write(textarraylist);
+        writer.close();
+        Logger.logINFO("File Organized");
+    }
+
     public NodeList readXMLNode(String filename) {
         try {
             File fXmlFile = new File(filename);
@@ -70,48 +89,53 @@ public class XML {
         }
     }
 
-    public void setNewFile() {
+    public XML setNewFile() {
         try {
             document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             Logger.logINFO("New File Set");
         } catch (Exception e) {
             Logger.logERROR(log + "createNewFile] " + e);
         }
+        return this;
     }
 
-    public void addElement(String name) {
+    public XML addElement(String name) {
         elements.add(document.createElement(name));
         Logger.logINFO("Added Element: " + name);
+        return this;
     }
 
-    public void appendElement(int addTo, int element) {
+    public XML appendElement(int addTo, int element) {
         try {
             elements.get(addTo).appendChild(elements.get(element));
             Logger.logALL("Added " + elements.get(element).getTagName() + " to " + elements.get(addTo).getTagName());
         } catch (Exception e) {
             Logger.logERROR(log + "appendElement] " + e);
         }
+        return this;
     }
 
-    public void appendToDoc(int element) {
+    public XML appendToDoc(int element) {
         try {
             document.appendChild(elements.get(element));
             Logger.logALL("Added " + elements.get(element) + " to Document");
         } catch (Exception e) {
             Logger.logERROR(log + "appendToDoc] " + e);
         }
+        return this;
     }
 
-    public void setAttribute(int element, String attribute, String value) {
+    public XML setAttribute(int element, String attribute, String value) {
         try {
             elements.get(element).setAttribute(attribute, value);
             Logger.logALL("Added Attribute " + attribute + " with value of " + value + " to element " + elements.get(element).getTagName());
         } catch (Exception e) {
             Logger.logERROR(log + "setAttribute] " + e);
         }
+        return this;
     }
 
-    public void saveFile(String filename) {
+    public XML saveFile(String filename) {
         try {
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(new File(filename));
@@ -121,41 +145,25 @@ public class XML {
         } catch (Exception e) {
             Logger.logERROR(log + "saveFile] " + e);
         }
+        return this;
     }
 
-    void fixOrganization(String filename) {
-        Read read = new Read(filename);
-        ArrayList<String> text2 = read.read();
-        ArrayList<String> textarraylist = new ArrayList<>(0);
-        int tabs = -2;
-        String temp = " ";
-        for (String s : text2) {
-            if (!s.contains("/") || !temp.contains("/")) tabs += 1;
-            else if (s.substring(0, 2).equals("</")) tabs -= 1;
-            for (int i = 0; i < tabs; i++) s = "     " + s;
-            textarraylist.add(s);
-            temp = s;
-        }
-        Write write = new Write(filename, false);
-        write.write(textarraylist);
-        write.close();
-        Logger.logINFO("File Organized");
-    }
-
-    public void addTextToElement(int element, String text) {
+    public XML addTextToElement(int element, String text) {
         try {
             appendElement(element, document.createTextNode(text));
         } catch (Exception e) {
             Logger.logERROR(log + "addTextToElement] " + e);
         }
+        return this;
     }
 
-    void appendElement(int addTo, Text element) {
+    public XML appendElement(int addTo, Text element) {
         try {
             elements.get(addTo).appendChild(element);
             Logger.logALL("Added String " + element.getWholeText() + " to " + elements.get(addTo).getTagName());
         } catch (Exception e) {
             Logger.logERROR(log + "appendElement] " + e);
         }
+        return this;
     }
 }

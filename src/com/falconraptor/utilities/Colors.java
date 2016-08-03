@@ -12,7 +12,7 @@ class Colors {
         int i = 0;
         while (i < 4) {
             try {
-                Integer.parseInt(abc.substring(abc.indexOf(find) + 2, abc.indexOf(find) + a));
+                Integer.parseInt(abc.substring(abc.indexOf(find) + find.length(), abc.indexOf(find) + a));
                 break;
             } catch (Exception var6) {
                 String log = "[com.falconraptor.utilities.Colors.";

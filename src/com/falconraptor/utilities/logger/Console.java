@@ -74,7 +74,7 @@ public class Console extends JFrame {
         return p;
     }
 
-    public void updateConsole(String obj) {
+    public Console updateConsole(String obj) {
         logtext.add(obj);
         text.setEditable(true);
         if (logtext.size() > 15) {
@@ -86,5 +86,6 @@ public class Console extends JFrame {
         } else if (logtext.size() >= 1)
             text.setText(text.getText() + logtext.get(logtext.size() - 1) + System.getProperty("line.separator"));
         text.setEditable(false);
+        return this;
     }
 }

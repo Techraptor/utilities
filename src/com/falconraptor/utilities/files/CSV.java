@@ -4,49 +4,52 @@ import java.util.AbstractList;
 import java.util.ArrayList;
 
 public class CSV {
-	private Write write = null;
-	private Read read = null;
-	private ArrayList<String> lines = null;
+    private Writer writer = null;
+    private Reader reader = null;
+    private ArrayList<String> lines = null;
 	private int line = 0;
 
 	public CSV (String name, Boolean w) {
 		if (w) {
-			write = new Write(name);
-		} else {
-			read = new Read(name);
-		}
+            writer = new Writer(name);
+        } else {
+            reader = new Reader(name);
+        }
 	}
 
 	public CSV(String n){
 		this(n,false);
 	}
 
-	public void close () throws Exception {
-		if (write == null) throw new Exception("Writer not available");
-		write.close();
-	}
+    public CSV close() throws Exception {
+        if (writer == null) throw new Exception("Writer not available");
+        writer.close();
+        return this;
+    }
 
-	public void addRow (Object[] obj) throws Exception {
-		if (write == null) throw new Exception("Writer not available");
-		for (int i = 0; i < obj.length; i++) write.writeln(obj[i].toString() + ((obj.length - 1 == i) ? "" : ","));
-	}
+    public CSV addRow(Object[] obj) throws Exception {
+        if (writer == null) throw new Exception("Writer not available");
+        for (int i = 0; i < obj.length; i++) writer.writeln(obj[i].toString() + ((obj.length - 1 == i) ? "" : ","));
+        return this;
+    }
 
-	public <T extends AbstractList> void addRow (T obj) throws Exception {
-		if (write == null) throw new Exception("Writer not available");
-		for (int i = 0; i < obj.size(); i++)
-			write.writeln(obj.get(i).toString() + ((obj.size() - 1 == i) ? "" : ","));
-	}
+    public <T extends AbstractList> CSV addRow(T obj) throws Exception {
+        if (writer == null) throw new Exception("Writer not available");
+        for (int i = 0; i < obj.size(); i++)
+            writer.writeln(obj.get(i).toString() + ((obj.size() - 1 == i) ? "" : ","));
+        return this;
+    }
 
 	public String readLine () throws Exception {
-		if (read == null) throw new Exception("Reader not available");
-		if (lines == null) readAll();
+        if (reader == null) throw new Exception("Reader not available");
+        if (lines == null) readAll();
 		if (line >= lines.size() - 1) return null;
 		return lines.get(line++);
 	}
 
 	public ArrayList<String> readAll () throws Exception {
-		if (read == null) throw new Exception("Reader not available");
-		lines = read.read();
-		return lines;
+        if (reader == null) throw new Exception("Reader not available");
+        lines = reader.read();
+        return lines;
 	}
 }

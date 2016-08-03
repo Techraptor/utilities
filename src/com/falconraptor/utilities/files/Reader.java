@@ -10,13 +10,23 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Read {
-    private static final String log = "[com.falconraptor.utilities.files.Read.";
+public class Reader {
+    private static final String log = "[com.falconraptor.utilities.files.Reader.";
     private BufferedReader reader;
+
+    public Reader(String filename) {
+        try {
+            File file = new File(filename);
+            if (!file.exists()) Logger.logERROR(filename + " does not exist!");
+            reader = new BufferedReader(new FileReader(filename));
+        } catch (Exception e) {
+            Logger.logERROR(log + "Reader] " + e);
+        }
+    }
 
     public static ArrayList<String> readjar(String filename) {
         try {
-            BufferedReader input = new BufferedReader(new InputStreamReader(Read.class.getClassLoader().getResourceAsStream(filename)));
+            BufferedReader input = new BufferedReader(new InputStreamReader(Reader.class.getClassLoader().getResourceAsStream(filename)));
             String line = input.readLine();
             ArrayList<String> out = new ArrayList<>(0);
             while (line != null) {
@@ -34,19 +44,11 @@ public class Read {
     public static BufferedImage readImagefromJar(String filename) {
         BufferedImage buff = null;
         try {
-            buff = ImageIO.read(Read.class.getResourceAsStream(filename));
+            buff = ImageIO.read(Reader.class.getResourceAsStream(filename));
         } catch (Exception e) {
             Logger.logERROR(log + "readImagefromJar] " + e);
         }
         return buff;
-    }
-
-    public Read(String filename) {
-        try {
-            File file = new File(filename);
-            if (!file.exists()) Logger.logERROR(filename + " does not exist!");
-            reader = new BufferedReader(new FileReader(filename));
-        } catch (Exception e) {Logger.logERROR(log + "Read] " + e);}
     }
 
     public ArrayList<String> read() {

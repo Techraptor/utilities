@@ -1,6 +1,6 @@
 package com.falconraptor.utilities;
 
-import com.falconraptor.utilities.files.Write;
+import com.falconraptor.utilities.files.Writer;
 import com.falconraptor.utilities.logger.Logger;
 
 public class Shutdown {
@@ -10,7 +10,7 @@ public class Shutdown {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
-                Write.makeDir("logs");
+                Writer.makeDir("logs");
                 Logger.saveLog("logs/" + packagename + "Log.log");
             }
         });

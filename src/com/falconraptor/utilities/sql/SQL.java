@@ -1,9 +1,6 @@
 package com.falconraptor.utilities.sql;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SQL {
     private static SQL instance = null;
@@ -14,15 +11,16 @@ public class SQL {
         return instance;
     }
 
-    public void connect(String sql, String u, String p, SqlType s) throws Exception {
+    public SQL connect(String sql, String u, String p, SqlType s) throws Exception {
         if (s == SqlType.MSSQL) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         else if (s == SqlType.MYSQL) Class.forName("com.mysql.jdbc.Driver");
         else if (s == SqlType.ACCESS) Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         c = DriverManager.getConnection(sql, u, p);
+        return this;
     }
 
     public Statement getStatement() throws Exception {
-        return c.createStatement(1004, 1007);
+        return c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
     }
 
     public void close() throws SQLException {

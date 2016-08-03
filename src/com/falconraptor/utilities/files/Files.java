@@ -29,7 +29,7 @@ public class Files {
         return path;
     }
 
-    public static void downloadfile(String url, String filename) {
+    public static File downloadfile(String url, String filename) {
         try {
             URL download = new URL(url);
             Logger.logDEBUG(log + "downloadfile] Starting Download of " + filename + " from " + url);
@@ -40,8 +40,10 @@ public class Files {
             fileOut.close();
             rbc.close();
             Logger.logDEBUG(log + "downloadfile] Download Complete");
+            return new File(filename);
         } catch (Exception e) {
             Logger.logERROR(log + "downloadfile] " + e);
+            return null;
         }
     }
 
